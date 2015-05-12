@@ -1,4 +1,4 @@
 Cogentia.io
 ========
 
-A blog about programming and development, especially Ruby on Rails.
+A blog about programming, development and life. 
