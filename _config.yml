@@ -3,21 +3,19 @@ title: "Cogentia.io"
 email: amscott@openmailbox.org
 description: "A blog about life, the universe and everything"
 baseurl: ""
-url: "http://cogentia.io"
+url: "http://askl56.github.io"
 title_description: "A blog about life, the universe and everything"
-title_image: "http://www.gravatar.com/avatar/00000000000000000000000000000000?s=500&d=mm"
-google_analytics: "UA-20365477-4"
-disqus_account: cartenoire
+title_image:
+google_analytics: "
+disqus_account: askl56
 github_repository: https://github.com/jacobtomlinson/carte-noire
 addthis_id: ra-513c6fa83da6ec67
 post_limit: 5
 
 # Social usernames/URLs
-twitter_username: _jacobtomlinson
-github_username:  jacobtomlinson
-linkedin_link: http://carte-noire.jacobtomlinson.co.uk/
-google_plus_link: http://carte-noire.jacobtomlinson.co.uk/
-stackoverflow_link: http://carte-noire.jacobtomlinson.co.uk/
+github_username:  askl56
+google_plus_link: https://plus.google.com/u/0/+AndrewScott56/
+quora_link:
 
 # Footer
 footer_left: "Made with <i class=\"fa fa-heart\"></i> by <a href=\"https://twitter.com/_JacobTomlinson\">Jacob Tomlinson</a>"
