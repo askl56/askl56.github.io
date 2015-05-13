@@ -1,4 +1,3 @@
-Cogentia.io
-========
+# Cogentia.io 
 
-A blog about programming, development and life. 
+A blog about life, programming, the universe and everything else. 
