@@ -3,4 +3,4 @@ layout: page
 title: About me 
 ---
 
-This is a static page. It could be an 'about page' if you'd like.
+23 year old web developer based in London. Love Ruby, Rails and Javascript. My Github is [here](https://github.com/askl56) and Quora profile is [here](http://www.quora.com/Andrew-Scott-10)
