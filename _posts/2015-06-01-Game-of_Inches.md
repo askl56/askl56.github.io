@@ -17,7 +17,7 @@ The third phase began as I started looking for jobs. I had never really looked a
 
 Let me give you an example. I was working on a Prime multiplication table calculator for the command line. You can find my finished product [here](https://github.com/askl56/PrimeTime). In essence, the program had to calculate, without the use of the Prime library in Ruby, a list of primes provided by the user in the form of n, then multiply them together. I do not wish to write a thesis on this so I will focus simply on the code which finds the prime numbers and stores them in an array.
 
-In my first itteration, I had this:
+In my first iteration, I had this:
 
 ```
 # Firstly a function to determine if a given number is Prime.
