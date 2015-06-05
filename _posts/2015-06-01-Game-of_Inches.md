@@ -19,7 +19,7 @@ Let me give you an example. I was working on a Prime multiplication table calcul
 
 In my first iteration, I had this:
 
-```
+```ruby
 # Firstly a function to determine if a given number is Prime.
 
 def prime?(n)
@@ -44,7 +44,7 @@ For a beginner, this code isn't bad. It does the job at hand, it tests each numb
 
 However, I wasn't happy. When looking at it, it simply appeared bulky, and frankly unpleasant, at least from an aesthetic point of view. It is also inefficient mathematically since it has to continuously compute through every number to n checking if its prime. By complete chance, and reading an unrelated Ruby article, I stumbled across the Lazy emunerator. After messing around for nearly a day, I came up with this:
 
-```
+```ruby
 def find_primes(n)
   inf = Float::INFINITY
 
