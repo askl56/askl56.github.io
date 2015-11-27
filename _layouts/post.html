@@ -1,92 +1,106 @@
 ---
 layout: default
-disqus: false
-archive: false
-post_class: post-template
 ---
+<div class="post">
 
-<header class="main-header post-head {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
-    <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
-        <a class="back-button icon-arrow-left" href="{{ site.baseurl }}">Home</a>
-        <a class="subscribe-button icon-feed" href="{{ site.baseurl }}rss.xml">Subscribe</a>
-    </nav>
-</header>
+<div class="post-header-container {% if page.cover %}has-cover{% endif %}" {% if page.cover %}style="background-image: url({{ page.cover | prepend: site.baseurl }});"{% endif %}>
+  <div class="scrim {% if page.cover %}has-cover{% endif %}">
+    <header class="post-header">
+      <h1 class="title">{{ page.title }}</h1>
+      <p class="info">by <strong>{{ page.author }}</strong></p>
+    </header>
+  </div>
+</div>
 
-<main class="content" role="main">
+<div class="wrapper">
 
-    <article class="post">
+{% unless page.cover %} {% include page_divider.html %} {% endunless %}
 
-        <header class="post-header">
-            <h1 class="post-title">{{ page.title }}</h1>
-            <section class="post-meta">
-                <time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
-                {% if page.categories.size > 0 %}
-                    {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
-                {% endif %}
-            </section>
-        </header>
+<section class="post-meta">
+  <div class="post-date">{{ page.date | date: "%B %-d, %Y" }}</div>
+  <div class="post-categories">
+  {% if page.categories %}in {% for cat in page.categories %}
+    {% if site.jekyll-archives %}
+    <a href="{{ site.baseurl }}/category/{{ cat }}">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
+    {% else %}
+    <span>{{ cat | capitalize }}</span>{% if forloop.last == false %}, {% endif %}
+    {% endif %}
+  {% endfor %}{% endif %}
+  </div>
+</section>  
 
-<!--         <header class="post-header">
-            <a id="blog-logo" href="{{site.url}}">
-                {% if site.logo %}
-                    <img src="{{site.logo}}" alt="{{ site.name }}" />
-                {% else %}
-                    <span class="blog-title">{{ site.name }}</span>
-                {%endif%}
-            </a>
-        </header> -->
+<article class="post-content">
+  {{ content }}
+</article>
 
-        <!-- <span class="post-meta">
-            <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
-            {% if page.categories.size > 0 %}
-                {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
-            {% endif %}
-        </span> -->
+{% if site.jekyll-archives %}
+{% if page.tags.size > 0 %}
+<section class="tags">
+  <strong>Tags:</strong> {% for tag in page.tags %}<a href="{{ site.baseurl }}/tag/{{ tag }}">{{ tag }}</a>{% if forloop.last == false %},&nbsp;{% endif %}{% endfor %}
+</section>
+{% endif %}
+{% endif %}
 
-        <!-- <h1 class="post-title">{{ page.title }}</h1> -->
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></strong></p>
+</section>
 
-        <section class="post-content">
-            {{content}}
-        </section>
+<section class="share">
+  <span>Share: </span>
+  {% for social in site.social %}
+    {% capture full_url %}{{ site.url }}{{ site.baseurl }}{{ page.url }}{% endcapture %}
+    {% if social.name == "Twitter" and social.share == true %}
+      <a href="//twitter.com/share?text={{ page.title | cgi_escape }}&url={{ full_url }}&via={{social.username}}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
+        <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
+      </a>
+    {% endif %}
+    {% if social.name == "Facebook" and social.share == true %}
+      <a href="//www.facebook.com/sharer.php?t={{ page.title | cgi_escape }}&u={{ full_url }}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
+        <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
+      </a>
+    {% endif %}
+    {% if social.name == "Google+" and social.share == true %}
+      <a href="//plus.google.com/share?title={{ page.title | cgi_escape }}&url={{ full_url }}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
+        <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
+      </a>
+    {% endif %}
+    {% if social.name == "LinkedIn" and social.share == true %}
+      <a href="//www.linkedin.com/shareArticle?mini=true&url={{ full_url }}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
+        <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
+      </a>
+    {% endif %}
+    {% if social.name == "Pinterest" and social.share == true %}
+      <a href="//www.pinterest.com/pin/create/button/?description={{ page.title | cgi_escape }}&url={{ full_url }}&media={{ site.url }}{% if page.cover %}{{ page.cover | prepend: site.baseurl  }}{% elsif site.cover %}{{ site.cover | prepend: site.baseurl }}{% else %}{{ site.logo | prepend: site.baseurl }}{% endif %}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
+        <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
+      </a>
+    {% endif %}
+  {% endfor %}
+</section>
 
-        {% if page.archive %}
-        <section class="archive">
-            <h5>Archive</h5>
-            <ul>
-                {% for post in site.posts %}
-                    <li><span>{{ post.date | date_to_string }}</span>  <a href="{{ post.url }}">{{ post.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </section>
-        {% endif %}
+{% if site.disqus_shortname %}
+{% unless page.disqus_disabled %}
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = '{{ site.disqus_shortname }}';
 
-        <footer class="post-footer">
-            <!-- If we want to display author's name and bio -->
-            {% if site.author %}
-                <figure class="author-image">
-                    <a class="img" href="{{ site.baseurl }}" style="background-image: url(/assets/images/2.png)">
-                    <span class="hidden">{{site.author}}'s Picture</span></a>
-                </figure>
-                <section class="author">
-                    <!-- Author Name -->
-                    <h4> {{ site.author }} </h4>
-                    <!-- Author Bio -->
-                    <p>
-                       23 year old Rails developer from London <iframe src="https://ghbtns.com/github-btn.html?user=askl56&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
-                    </p>
-                </section>
-            {% endif %}
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+{% endunless %}
+{% endif %}
 
-            <!-- Share links section -->
-            {% include share.html %}
-
-            <!-- Disqus comments -->
-            {% if page.disqus %}
-                {% include disqus.html %}
-            {% endif %}
-
-        </footer>
-
-    </article>
-
-</main>
+</div>
+</div>

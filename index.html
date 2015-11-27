@@ -1,81 +1,89 @@
 ---
 layout: default
-title: Home
-cover: false
-about: 'about.html'
 ---
+<div class="home">
 
-<header class="main-header {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
-    <nav class="main-nav overlay clearfix">
-        {% if page.logo %}
-        <a class="blog-logo" href="{{ site.baseurl }}">
-            <img src="{{ page.logo }}" alt="Blog Logo" />
-        </a>
-        {% endif %}
-        <a class="subscribe-button icon-feed" href="{{ site.baseurl }}rss.xml">Subscribe</a>
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">{{ site.name }}</h1>
-            <h2 class="page-description">
-                {% if site.description %} {{ site.description }}. {% endif %}
-                {% if page.about %} <a href='{{ site.baseurl }}{{ page.about }}'> About me </a> {% endif %}
-            </h2>
-        </div>
-    </div>
-    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
-</header>
-
-
-<main id="content" class="content" role="main">
-
-
-    <div class="extra-pagination inner">
-        {% include pagination.html %}
-    </div>
-
-    {% for post in paginator.posts %}
-
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        </header>
-        <section class="post-excerpt">
-            {{ post.excerpt }} <a class="read-more" href="{{ post.url }}">&raquo;</a>
-        </section>
-        <footer class="post-meta">
-            {% if site.author %}
-            <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
-            {{ site.author }}
-            {% endif %}
-            {% if post.categories.size > 0 %}
-            {{ post.categories | array_to_sentence_string | prepend: 'on ' }}
-            {% endif %}
-            <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
-                {{ post.date | date_to_string }}
-            </time>
-        </footer>
-    </article>
-
-    <!-- Capser below -->
-<!--     <article class="{{post_class}}">
-    <header class="post-header">
-        <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+<div class="site-header-container {% if site.cover %}has-cover{% endif %}" {% if site.cover %}style="background-image: url({{ site.cover | prepend: site.baseurl }});"{% endif %}>
+  <div class="scrim {% if site.cover %}has-cover{% endif %}">
+    <header class="site-header">
+      <h1 class="title">{{ site.title }}</h1>
+      {% if site.subtitle %}<p class="subtitle">{{ site.subtitle }}</p>{% endif %}
     </header>
-    <section class="post-excerpt">
-        <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">&raquo;</a></p>
+  </div>
+</div>
+
+<div class="wrapper">
+<ul class="post-list">
+  {% for post in paginator.posts %}
+  <li>
+    <h2>
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
     </section>
-    <footer class="post-meta">
-        {{#if author.image}}<img class="author-thumb" src="{{author.image}}" alt="Author image" nopin="nopin" />{{/if}}
-        {{author}}
-        {{tags prefix=" on "}}
-        <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
-    </footer>
-</article> -->
-<!--  -->
+    <section class="post-meta">
+      <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+      <div class="post-categories">
+      {% if post.categories %}in {% for cat in post.categories %}
+        {% if site.jekyll-archives %}
+        <a href="{{ site.baseurl }}/category/{{ cat }}">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
+        {% else %}
+        <span>{{ cat | capitalize }}</span>{% if forloop.last == false %}, {% endif %}
+        {% endif %}
+      {% endfor %}{% endif %}
+      </div>
+    </section>
+  </li>
+  {% if forloop.last == false %}
+  <hr>
+  {% endif %}
+  {% endfor %}
+</ul>
 
-{% endfor %}
+<nav class="pagination" role="navigation">
+  <p>
+    {% if paginator.next_page %}
+    <a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.next_page}}">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+    {% else %}
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+    </span>
+    {% endif %}
+    <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    {% if paginator.previous_page %}
+      {% if paginator.page == 2 %}
+      <a class="newer-posts" href="{% if site.baseurl %}{{ site.baseurl }}{% else %}/{% endif %}">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x"></i>
+          <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+      {% else %}
+      <a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.previous_page}}">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x"></i>
+          <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+      {% endif %}
+    {% else %}
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+    </span>
+    {% endif %}
+  </p>
+  <p>
+    <a href="{{ site.baseurl }}/posts">View All Posts by Category</a>
+  </p>
+</nav>
 
-{% include pagination.html %}
-
-</main>
+</div>
+</div>
