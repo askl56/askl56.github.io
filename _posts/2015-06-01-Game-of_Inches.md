@@ -9,17 +9,18 @@ image:
 
 Although still a veritable spring chicken in the coding world and beyond, I am beginning to grow feathers.
 
-This post will no doubt bore any veterans to the core, but it relays something which I found incredibly interesting. When learning to code, I feel that I have gone through three distinct phases. The first was learning anything and everything I could to be able to churn out code as quickly as possible. This "devil may care" attitude serves its own purpose in the beginning, but like with any science, one quickly realises that the devils are everywhere in the details. Writing code is easy. Fixing, testing and refactoring it are not. 
+This post will no doubt bore any veterans to the core, but it relays something which I found incredibly interesting. When learning to code, I feel that I have gone through three distinct phases. The first was learning anything and everything I could to be able to churn out code as quickly as possible. This "devil may care" attitude serves its own purpose in the beginning, but like with any science, one quickly realises that the devils are everywhere in the details. Writing code is easy. Fixing, testing and refactoring it are not.
 
 The second phase that I went through was when suddenly I realised that testing was important. For many programmers, I'm sure testing is boring as shit. It demands as much code, if not more than what it is testing, and it somewhat inhibits the flow of whatever one is trying to do. These are the attacks usually laid at the door of TDD and BDD. Whilst I recognise that there is undoubtedly some truth in them, it is much clearer to me that tests are vital and can even be fun. For some reason I have managed to get myself hooked on the dopamine release of having a fully working RSpec suite, with a deluge of green dots. I'm not entirely sure how or why this has happened, but I am definitely glad that it has.
 
-The third phase began as I started looking for jobs. I had never really looked at code as art before, nor given the comparison a lot of thought. However, as I looked at the code of others and compared it with my own, I was struck by how stark the difference is. In his excellent book, [Eloquent Ruby](http://www.amazon.co.uk/Eloquent-Ruby-Addison-Wesley-Professional/dp/0321584104), Russ Olsen describes for the first time, the game of inches. Good code should be a narrative, which not only works, but should require no explanation. Those two parts are equally important. 
+The third phase began as I started looking for jobs. I had never really looked at code as art before, nor given the comparison a lot of thought. However, as I looked at the code of others and compared it with my own, I was struck by how stark the difference is. In his excellent book, [Eloquent Ruby](http://www.amazon.co.uk/Eloquent-Ruby-Addison-Wesley-Professional/dp/0321584104), Russ Olsen describes for the first time, the game of inches. Good code should be a narrative, which not only works, but should require no explanation. Those two parts are equally important.
 
 Let me give you an example. I was working on a Prime multiplication table calculator for the command line. You can find my finished product [here](https://github.com/askl56/PrimeTime). In essence, the program had to calculate, without the use of the Prime library in Ruby, a list of primes provided by the user in the form of n, then multiply them together. I do not wish to write a thesis on this so I will focus simply on the code which finds the prime numbers and stores them in an array.
 
 In my first iteration, I had this:
 
 ```ruby
+
 # Firstly a function to determine if a given number is Prime.
 
 def prime?(n)
@@ -40,11 +41,12 @@ end
 
 ```
 
-For a beginner, this code isn't bad. It does the job at hand, it tests each number to see if it is prime and if it is then it stores them in the array and increments the count until the count reaches the number provided by the user. 
+For a beginner, this code isn't bad. It does the job at hand, it tests each number to see if it is prime and if it is then it stores them in the array and increments the count until the count reaches the number provided by the user.
 
 However, I wasn't happy. When looking at it, it simply appeared bulky, and frankly unpleasant, at least from an aesthetic point of view. It is also inefficient mathematically since it has to continuously compute through every number to n checking if its prime. By complete chance, and reading an unrelated Ruby article, I stumbled across the Lazy emunerator. After messing around for nearly a day, I came up with this:
 
 ```ruby
+
 def find_primes(n)
   inf = Float::INFINITY
 
