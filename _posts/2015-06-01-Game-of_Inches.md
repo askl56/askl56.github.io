@@ -19,7 +19,7 @@ Let me give you an example. I was working on a Prime multiplication table calcul
 
 In my first iteration, I had this:
 
-```ruby
+{% highlight ruby linenos %}
 
 # Firstly a function to determine if a given number is Prime.
 
@@ -39,13 +39,13 @@ def prime_storage(n)
   prime_array
 end
 
-```
+{% endhighlight %}
 
 For a beginner, this code isn't bad. It does the job at hand, it tests each number to see if it is prime and if it is then it stores them in the array and increments the count until the count reaches the number provided by the user.
 
 However, I wasn't happy. When looking at it, it simply appeared bulky, and frankly unpleasant, at least from an aesthetic point of view. It is also inefficient mathematically since it has to continuously compute through every number to n checking if its prime. By complete chance, and reading an unrelated Ruby article, I stumbled across the Lazy emunerator. After messing around for nearly a day, I came up with this:
 
-```ruby
+{% highlight ruby linenos %}
 
 def find_primes(n)
   inf = Float::INFINITY
@@ -57,6 +57,6 @@ def find_primes(n)
   primes.first(n)
 end
 
-```
+{% endhighlight %}
 
 I'm not claiming it's perfect, but it's a whole hell of a lot cleaner than the first version, and far more to the point, I have managed to fit two different methods into one. There is something immensely satisfying about learning more and more about code design and how things are meant to be. For me certainly, writing better designed code has been a massive contributor to my confidence in terms of coding, and it undoubtedly has helped to reinforce the feeling that I love, namely that a piece of code is never finished and can always be improved upon.
