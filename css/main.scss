@@ -3,11 +3,13 @@
 ---
 @charset "utf-8";
 
-// Import partials from `sass_dir` (defaults to `_sass`)
-// Includes Bourbon, Neat, and Bitters (thanks, thoughtbot!)
+/* =Colors */
+$dorian: #F5F5F5;
+$iron: #333333;
+$cloudy: #828282;
+
 @import
-  "bourbon/bourbon",
-  "base/base",
-  "neat/neat",
-  "layout"
+    "mixins",
+    "default",
+    "404"
 ;
