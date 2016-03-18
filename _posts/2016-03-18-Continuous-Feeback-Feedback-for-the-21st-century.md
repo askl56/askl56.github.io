@@ -1,3 +1,12 @@
+---
+layout: post
+title: Continuous Feedback - Peer Review for the 21st Century
+description: "Peer Review for the 21st century."
+tags: [coding, ruby, python, javascript]
+image:
+  background: triangular.png
+---
+
 # Continuous Feedback - Peer Review for the 21st Century
 
 One of the hardest things for any company to do is to foster an environment in which employees feel motivated and are able to know how to improve, both as skilled employees and as people. For the last few years a fierce debate has emerged over the effectiveness of annual performance reviews and the merit they have in the 21st century workplace.
