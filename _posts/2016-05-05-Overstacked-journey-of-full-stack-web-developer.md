@@ -7,8 +7,6 @@ image:
   background: triangular.png
 ---
 
-# Overstacked? The plight of the full stack web developer
-
 At first glance, it is easy to believe that programming as a profession is one which is both in rude health, and for which the future is incredibly bright. Increased automation, the mind bending world of machine learning, and the ever more intuitive ways in which software impacts our lives all suggest that programming is the career to be in, and one of the few careers which one can safely guarantee will still be around in 50 years irrespective of automation or many of the other issues that threaten the future workforce.
 
 Many thousands of people have heeded the call. An entire industry has been rapidly built around getting budding young developers *“job ready”* in 12 weeks. The idea, in my experience as a student of an early self driven remote [course](https://www.bloc.io/) , is to festoon fertile young minds with just enough Rails/JS knowledge to get them through a technical interview, and that’s about it.  These businesses thrive on selling dreams of working for Google and Facebook and usually profit handsomely both at point of enrolment and graduation (when finding their students jobs). But this is not yet another blog post criticising the commoditisation of young programmers, as that topic has been explored to a large degree already.
