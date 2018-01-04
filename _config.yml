@@ -11,7 +11,7 @@ url: "http://cogentia.io" # the base hostname & protocol for your site
 author:
   fullname: Andrew Scott
   github: askl56
-  twitter: amscott56
+  # twitter: amscott56
   # disqus: your_disqus_username
 
 # google_analytics: 'UA-XXXXXXXX-X'
